@@ -21,7 +21,6 @@ args = vars(ap.parse_args())
 # function to create our object tracker
 if int(major) == 3 and int(minor) < 3:
 	tracker = cv2.Tracker_create(args["tracker"].upper())
- 
 # otherwise, for OpenCV 3.3 OR NEWER, we need to explicity call the
 # approrpiate object tracker constructor:
 else:
@@ -77,7 +76,7 @@ while True:
 	if initBB is not None:
 		# grab the new bounding box coordinates of the object
 		(success, box) = tracker.update(frame)
- 
+		#print("Trenutni bounding box: " + box)
 		# check to see if the tracking was a success
 		if success:
 			(x, y, w, h) = [int(v) for v in box]
@@ -112,7 +111,6 @@ while True:
 		# sure you press ENTER or SPACE after selecting the ROI)
 		initBB = cv2.selectROI("Frame", frame, fromCenter=False,
 			showCrosshair=True)
- 
 		# start OpenCV object tracker using the supplied bounding box
 		# coordinates, then start the FPS throughput estimator as well
 		tracker.init(frame, initBB)
