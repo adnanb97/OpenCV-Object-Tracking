@@ -62,7 +62,7 @@ else:
 # initialize the FPS throughput estimator
 fps = None
 # do not forget to set up sizes of arrays in find-best-path according to this N
-N = 15 
+N = 5 
 # do the tracking N times
 for iteration in range(N):
     file.write("Iteration #" + str(iteration) + '\n')
@@ -125,7 +125,7 @@ for iteration in range(N):
             r1 = (172, 45, 75, 72) #video1
             r2 = (210, 68, 56, 53) #video2
             r3 = (215, 82, 45, 42) #video3
-            initBB = r1
+            initBB = r3
 
             #initBB = cv2.selectROI("Frame", frame, fromCenter=False,
              #   showCrosshair=True)
