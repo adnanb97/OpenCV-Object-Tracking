@@ -1,3 +1,6 @@
+#this code is meant to find the initial bounding box and print it out
+#it is used for initalization of each tracker
+
 # import the necessary packages
 from imutils.video import VideoStream
 from imutils.video import FPS
@@ -120,6 +123,7 @@ while True:
         # coordinates, then start the FPS throughput estimator as well
         tracker.init(frame, initBB)
         fps = FPS().start()
+        break
         # if the `q` key was pressed, break from the loop
     elif key == ord("q"):
         break

@@ -1,5 +1,5 @@
 # the purpose of this code is to show side by side
-# original video and its hsv conversion
+# original video and its hsv conversion (finding HSV channels for our object)
 
 # import the necessary packages
 from imutils.video import VideoStream
@@ -60,6 +60,8 @@ while True:
     u_v = cv2.getTrackbarPos("U - V", "Trackbars")
     lower_blue = np.array([l_h, l_s, l_v])
     upper_blue = np.array([u_h, u_s, u_v])
+    #lower_blue = np.array([65, 255, 0])
+    #upper_blue = np.array([144, 255, 119])
     mask = cv2.inRange(hsv, lower_blue, upper_blue)
     result = cv2.bitwise_and(frame, frame, mask=mask)
     
@@ -76,7 +78,8 @@ while True:
         c = max(cnts, key=cv2.contourArea)
         ((x, y), radius) = cv2.minEnclosingCircle(c)
         M = cv2.moments(c)
-        center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+        if M["m00"] != 0:
+            center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
  
         # only proceed if the radius meets a minimum size
         if radius > 10:
