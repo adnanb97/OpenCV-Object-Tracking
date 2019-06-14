@@ -1,0 +1,13 @@
+clc;
+clear all; 
+imeFajla = input('Unesite ime fajla: ', 's');
+fileID = fopen(strcat('..\BenchmarkResults\', imeFajla),'r');
+formatSpec = '%f';
+A = fscanf(fileID, formatSpec);
+brojRedova = size(A, 1);
+t = 1:brojRedova;
+plot(t, A);
+xlabel('Frame');
+ylabel('Maximum Success Rate');
+title('Benchmark results for TLD algorithm with HSV comparison - Maximum Success Rate');
+fclose(fileID);
