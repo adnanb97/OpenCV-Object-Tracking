@@ -183,7 +183,7 @@ while True:
         r5 = (259, 107, 47, 48) #video5
         r6 = (292, 96, 49, 50) #video6
         
-        initBB = r6
+        initBB = r4
 
            
         # start OpenCV object tracker using the supplied bounding box
